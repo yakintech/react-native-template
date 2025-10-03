@@ -4,9 +4,7 @@ import React from 'react'
 const Header = () => {
   return (
     <View>
-      <Text>Profile Image</Text>
-      <Text>Profile Name</Text>
-      <Text>Profile Bio</Text>
+      <Text>Header Component</Text>
     </View>
   )
 }

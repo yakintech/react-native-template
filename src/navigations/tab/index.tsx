@@ -17,8 +17,8 @@ const TabMain = () => {
       }}
     >
       <Tab.Screen name='Home' component={HomeStack} />
-      <Tab.Screen name='Profile' component={ProfileStack} />
       <Tab.Screen name='Cart' component={CartStack} />
+      <Tab.Screen name='Profile' component={ProfileStack} />
     </Tab.Navigator>
   </>
 }

@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useContext } from 'react'
 import { CartContext, CartContextType } from '../../../context/CartContext'
 import TSKBButton from '../../../components/core/button'
+import LottieView from "lottie-react-native";
 
 const CartMainScreen = () => {
 
@@ -22,6 +23,17 @@ const CartMainScreen = () => {
     </Text>
 
     <TSKBButton title='Clear Cart' onPress={clearCart} mode="contained" />
+
+    <View>
+      <LottieView
+        source={require('../../../assets/lotties/cart.json')}
+        autoPlay
+        loop
+        style={{ width: 200, height: 200, alignSelf: 'center', marginTop: 20 }}
+      />
+
+    </View>
+
   </>
 
 }
