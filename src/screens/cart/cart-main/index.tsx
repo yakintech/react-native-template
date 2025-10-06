@@ -3,10 +3,27 @@ import React, { useContext } from 'react'
 import { CartContext, CartContextType } from '../../../context/CartContext'
 import TSKBButton from '../../../components/core/button'
 import LottieView from "lottie-react-native";
+import { baseService } from '../../../api/baseService';
 
 const CartMainScreen = () => {
 
   const { items, clearCart } = useContext(CartContext) as CartContextType
+
+
+  const checkOut = () => {
+    // baseService.post<{ items: typeof items }, { success: boolean }>("/orders/checkout", { items })
+    //   .then(response => {
+    //     if (response.success) {
+    //       clearCart();
+
+    //     } else {
+
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.error("Checkout error:", error);
+    //   });
+  }
 
   return <>
     {items.map(item => (
@@ -31,6 +48,8 @@ const CartMainScreen = () => {
         loop
         style={{ width: 200, height: 200, alignSelf: 'center', marginTop: 20 }}
       />
+
+      <TSKBButton title='Checkout' onPress={checkOut} mode="contained" />
 
     </View>
 
