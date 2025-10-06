@@ -1,24 +1,20 @@
 import { View, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import TabMain from './src/navigations/tab'
 import CartProvider from './src/context/CartContext'
+import AuthProvider, { AuthContext, AuthContextData } from './src/context/AuthContext'
 
 
 const App = () => {
 
 
-  
-  // const [loading, setLoading] = useState(true)
-  // if(loading) {
-  //   return <SplashScreen onFinish={() => setLoading(false)} />
-  // }
-
-
   return <>
     <NavigationContainer>
       <CartProvider>
-        <TabMain />
+        <AuthProvider>
+          <TabMain />
+        </AuthProvider>
       </CartProvider>
     </NavigationContainer>
   </>

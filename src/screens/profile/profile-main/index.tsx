@@ -1,14 +1,17 @@
 import { View, Text, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from './components/Header'
 import { launchImageLibrary, launchCamera } from 'react-native-image-picker'
 import TSKBButton from '../../../components/core/button'
 import DeviceInfo from "react-native-device-info"
+import { AuthContext, AuthContextData } from '../../../context/AuthContext'
 
 const ProfileMainScreen = () => {
 
     const [photo, setPhoto] = useState<string | undefined>()
     const [deviceId, setDeviceId] = useState<string | undefined>()
+
+    const {logout} = useContext(AuthContext) as AuthContextData
 
     useEffect(() => {
 
@@ -44,6 +47,7 @@ const ProfileMainScreen = () => {
                 })
             }} />
             <Text>Device ID: {deviceId}</Text>
+            <TSKBButton title='Logout' onPress={logout} />
         </View>
 
     </>
