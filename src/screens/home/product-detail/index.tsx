@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { baseService } from '../../../api/baseService';
+import RoleProvider from '../../../utils/storage/auth/RoleProvider';
 
 
 
@@ -23,22 +24,15 @@ const ProductDetailScreen = ({ route }: any) => {
         // const controller = new AbortController();
         // const signal = controller.signal;
 
-        // const response = baseService.get<ProductDetailDto>(`/products/${productId}`, { signal });
-        // response.then((res) => {
-        //     setdetail(res);
-        // }).catch((err) => {
-        //     if (err.name !== 'AbortError') {
-        //     console.error(err);
-        //     }
-        // });
+        const response = baseService.get<ProductDetailDto>(`/products/${productId}`);
+        response.then((res) => {
+            setdetail(res);
+        })
+
 
         // return () => {
         //     controller.abort();
         // };
-
-
-  
-
 
 
 
@@ -48,11 +42,19 @@ const ProductDetailScreen = ({ route }: any) => {
 
 
 
-    return (
-        <View>
-            <Text>Product Detail</Text>
+    return <>
+        <View style={{ padding: 20 }}>
+            {detail ? <>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{detail.name}</Text>
+                <Text>Price: {detail.unitPrice}</Text>
+                <RoleProvider roleName="admin">
+                    <Text>In Stock: {detail.unitsInStock}</Text>
+                </RoleProvider>
+
+                <Text>Discontinued: {detail.discontinued ? "Yes" : "No"}</Text>
+            </> : <Text>Loading...</Text>}
         </View>
-    )
+    </>
 }
 
 export default ProductDetailScreen
